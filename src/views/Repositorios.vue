@@ -1,5 +1,10 @@
 <template>
-    <div class="container ">
+  <div class="container">  
+    <ListaRepositorios :maxResult="maxResult" />
+    <button class="verMais" @click="maxResult += 3">Ver mais</button>
+  </div>
+
+    <!-- <div class="container ">
       <div v-for="(repositorio, index) in repositorios" :key="repositorio.id">
           <div class="resultado-item" v-if="index < maxResult">
           <h3>{{ repositorio.name }} <button href="" class="favorito"> <font-awesome-icon  icon="fa-regular fa-star" @click="adicionarFavorito"/></button></h3>
@@ -8,19 +13,27 @@
         </div>
       </div>
       <button class="verMais" @click="maxResult += 3">Ver mais</button>
-    </div>
+    </div> -->
 </template>
 
 <script>
-
+import ListaRepositorios from '../components/ListaRepositorios.vue'
 
 export default {
   name: 'repositorios',
+  components: {
+    ListaRepositorios
+  },
   data(){
-    return{
-      maxResult: 3
+  return{
+    maxResult: 3
     }
   },
+  // data(){
+  //   return{
+  //     maxResult: 3
+  //   }
+  // },
   computed:{
     repositorios(){
       return this.$store.state.repositorios
@@ -29,8 +42,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.resultado-item{
+ <style scoped>
+ /* .resultado-item{
   margin-top: 40px;
   padding-bottom: 20px;
   border-bottom: 1px solid black;
@@ -76,6 +89,7 @@ export default {
 .img{
   text-align: center;
   margin-bottom: 70px;
-}
+}  */
+
 
 </style>
