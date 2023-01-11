@@ -2,7 +2,7 @@
     <div v-for="(repositorio, index) in repositorios" :key="repositorio.id">
      <div class="resultado-item" v-if="index < maxResult">  
         <div>
-          <h3>{{ repositorio.name }} <button href="" class="favorito"> <font-awesome-icon icon="fa-regular fa-star" @click="adicionarFavorito(repositorio)"/></button></h3>
+          <h3>{{ repositorio.name }} <button href="" class="favorito"> <font-awesome-icon icon="fa-regular fa-star" @click="removerFavorito(repositorio)"/></button></h3>
           <p>{{ repositorio.description }}</p> 
           <font-awesome-icon icon="fa-regular fa-star" /> <span>{{ repositorio.stargazers_count }}</span>
         </div>
@@ -15,22 +15,17 @@
 
 
 export default {
-  name: 'repositorios',
+  name: 'lista-favoritos',
   props:['maxResult'],
   computed:{
-      repositorios(){
-        return this.$store.state.repositorios
-      },
-      favoritos(){
-        return this.$store.state.favoritos
+    repositorios(){
+      return this.$store.state.favoritos
       }
     },
   methods:{
-    adicionarFavorito(repositorio){
-      //verificar se o repositorio já esta incluído nos favoritos, para evitar repositorios duplacados na listagem de favoritos
-      if(!this.favoritos.includes(repositorio)){
-      this.$store.commit("ADICIONAR_FAVORITO", repositorio)
-      } 
+    removerFavorito(repositorio){
+      var index = this.repositorios.indexOf(repositorio)
+       this.repositorios.splice(index,1)
     }
   }
 }
@@ -74,10 +69,7 @@ background: transparent;
 border: none;
 font-size: 36px;
 cursor: pointer;
-}
-.favorito:hover{
 color: #FFC700;
-
 }
 
 .img{
