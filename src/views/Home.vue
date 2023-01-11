@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-      <div v-if="!repositorios && !usuarios">
+      <div>
         <div class="view">
           <div class="img">
             <img src="../images/Vector.png" alt="">
@@ -14,18 +14,25 @@
           </div>
         </div>
       </div>
+      <Modal v-if="modalAberto" :fecharModal="fecharModal" />
     </section>
 </template>
 
 <script>
 
+import Modal from '../components/ModalNaoEncontrado.vue'
 
 export default {
   name: 'home',
+  components:{
+    Modal
+  },
   data(){
     return{
       busca: '',
-      selecionado: true
+      selecionado: true,
+      modalAberto: false,
+      pagina: 1
     }
   },
   methods:{
@@ -37,15 +44,43 @@ export default {
       }
     },
     buscarRepositorio(){
-      this.$store.commit("REPOSITORIOS_RESULTADO", this.busca)
-      this.$router.push('repositorios')
+      let url = `https://api.github.com/search/repositories?q=${this.busca}&page=${this.pagina}`;
+      fetch(url)
+        .then((r) => r.json())
+        .then((r) => {
+          let repositorios = r.items
+          if(r.total_count){ // veirifica se o resultado do fetch deu certo ou se nao achou nenhum reposirotio
+            this.$store.commit("REPOSITORIOS_RESULTADO", repositorios)
+            this.$router.push('repositorios')
+          } else {
+            this.modalAberto = true // faz o modal aparecer
+          }      
+        }
+      )
     },
     buscarUsuario(){
-      this.$store.commit("USUARIOS_RESULTADO", this.busca)
-      this.$router.push('usuarios')
+      let url = `https://api.github.com/search/users?q=${this.busca}&page=${this.pagina}`;
+      fetch(url)
+        .then((r) => r.json())
+        .then((r) => {
+          console.log(r)
+           let usuarios = r.items
+           console.log(usuarios)
+           if(r.total_count){ // veirifica se o resultado do fetch deu certo ou se nao achou nenhum usuario
+            this.$store.commit("USUARIOS_RESULTADO", usuarios)
+            this.$router.push('usuarios')
+           } else {
+            this.modalAberto = true // faz o modal aparecer
+           }      
+        }
+      )
+    },
+    fecharModal(){
+      this.modalAberto = false
     }
   }
 }
+
 </script>
 
 <style scoped>
