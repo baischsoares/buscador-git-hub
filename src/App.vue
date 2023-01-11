@@ -1,26 +1,60 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <TopHeader />
+     <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import TopHeader from './components/TopHeader.vue'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    TopHeader
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rubik:wght@300;400;500&display=swap');
+
+body, p{
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Inter';
+}
+ul{
+  list-style: none;
+  display: flex;
+}
+a{
+  text-decoration:none;
+  color: #000;
+} 
+img{
+  max-width: 100%;
+  display: inline-block;
+}
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.router-link-active{
+  color:#FF0000;
+}
+.view{
+  margin-top: 50px;
+}
+.verMais{
+  cursor: pointer;
+  margin: 74px auto;
+  border: 3px solid black;
+  font-family: 'Rubik';
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 10px;
+  padding: 10px 28px;
+  display: block;
 }
 </style>
