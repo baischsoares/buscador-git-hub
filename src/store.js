@@ -4,7 +4,7 @@ const store = createStore({
   state: {
     busca: '',
     repositorios: null,
-    favoritos: null,
+    favoritos: [],
     usuarios: null,
     usuario: null,
     pagina: 1,
@@ -34,6 +34,10 @@ const store = createStore({
         .then((r) => {
           state.usuario = r;
         });
+    },
+
+    ADICIONAR_FAVORITO(state, payload) {
+      state.favoritos.push(payload);
     },
   },
 });

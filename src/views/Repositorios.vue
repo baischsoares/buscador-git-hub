@@ -2,6 +2,7 @@
   <section class="container">  
     <ListaRepositorios :maxResult="maxResult" />
     <button class="verMais" @click="maxResult += 3">Ver mais</button>
+    {{ this.$store.state.favoritos }}
   </section>
 </template>
 

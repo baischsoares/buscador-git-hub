@@ -1,7 +1,7 @@
 <template>
     <section class="usuario-secao">
         <div class="usuario-infos">
-            <div><img :src="usuario.avatar_url" alt=""></div>
+             <div><img :src="usuario.avatar_url" alt=""></div> 
             <h3>{{ usuario.name }}</h3>
             <h4>{{ usuario.login }}</h4>
             <div class="dados" v-if="usuario.company"><img class="icone" src="../images/suitcase.svg"><span>usuario.company</span></div>
