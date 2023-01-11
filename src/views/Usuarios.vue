@@ -1,13 +1,14 @@
 <template>
-  <div class="container">
-    <div v-for="(usuario, index) in usuarios" :key="usuario.id">
+  <section class="container">
+    <div @click="pegarUsuario(usuario)" v-for="(usuario, index) in usuarios" :key="usuario.id">
       <div class="resultado-item card-usuario" v-if="index < maxResult">
         <img :src="usuario.avatar_url" alt="">
         <h3>{{ usuario.login }}</h3>
       </div>
     </div>
     <button class="verMais" @click="maxResult += 3">Ver mais</button>
-  </div>
+  </section>
+  
 </template>
 
 <script>
@@ -17,6 +18,11 @@ export default {
   name: 'usuarios',
   data(){
     return{
+      usuario: '',
+    }
+  },
+  data(){
+    return{
       maxResult: 3
     }
   },
@@ -24,6 +30,15 @@ export default {
     usuarios(){
       return this.$store.state.usuarios
     }
+  },
+  methods:{
+    pegarUsuario(usuario){
+      this.usuario = usuario.login;
+      this.$store.commit("USUARIO_ESCOLHIDO", this.usuario)
+      this.$store.commit("REPOSITORIOS_DECRESCENTE", this.usuario)
+      this.$router.push('usuario')
+    },
+
   }
 }
 </script>

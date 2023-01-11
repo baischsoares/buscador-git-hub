@@ -17,11 +17,6 @@
 export default {
 name: 'repositorios',
 props:['maxResult'],
-data(){
-  // return{
-  //   maxResult: 3
-  // }
-},
 computed:{
   repositorios(){
     return this.$store.state.repositorios

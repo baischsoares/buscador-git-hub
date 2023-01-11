@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from './views/Home.vue';
 import Repositorios from './views/Repositorios.vue';
 import Usuarios from './views/Usuarios.vue';
+import Usuario from './views/Usuario.vue';
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/usuarios',
     name: 'usuarios',
     component: Usuarios,
+  },
+  {
+    path: '/usuario',
+    name: 'usuario',
+    component: Usuario,
   },
 ];
 
