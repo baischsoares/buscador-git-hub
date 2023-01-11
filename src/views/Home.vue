@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <section class="container">
       <div v-if="!repositorios && !usuarios">
         <div class="view">
           <div class="img">
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 </template>
 
 <script>
