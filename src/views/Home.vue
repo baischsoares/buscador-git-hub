@@ -49,11 +49,11 @@ export default {
         .then((r) => r.json())
         .then((r) => {
           let repositorios = r.items
-          if(r.total_count){ // veirifica se o resultado do fetch deu certo ou se nao achou nenhum reposirotio
-            this.$store.commit("REPOSITORIOS_RESULTADO", repositorios)
-            this.$router.push('repositorios')
-          } else {
-            this.modalAberto = true // faz o modal aparecer
+           if(r.total_count){ // veirifica se o resultado do fetch deu certo ou se nao achou nenhum reposirotio
+             this.$store.commit("REPOSITORIOS_RESULTADO", repositorios)
+             this.$router.push('repositorios')
+           } else {
+             this.modalAberto = true // faz o modal aparecer
           }      
         }
       )
@@ -63,9 +63,7 @@ export default {
       fetch(url)
         .then((r) => r.json())
         .then((r) => {
-          console.log(r)
            let usuarios = r.items
-           console.log(usuarios)
            if(r.total_count){ // veirifica se o resultado do fetch deu certo ou se nao achou nenhum usuario
             this.$store.commit("USUARIOS_RESULTADO", usuarios)
             this.$router.push('usuarios')

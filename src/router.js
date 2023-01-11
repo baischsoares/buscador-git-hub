@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import Repositorios from './views/Repositorios.vue';
 import Usuarios from './views/Usuarios.vue';
 import Usuario from './views/Usuario.vue';
+import Favoritos from './views/Favoritos.vue';
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/usuario',
     name: 'usuario',
     component: Usuario,
+  },
+  {
+    path: '/favoritos',
+    name: 'favoritos',
+    component: Favoritos,
   },
 ];
 
