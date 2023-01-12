@@ -30,6 +30,7 @@ export default {
       //verificar se o repositorio já esta incluído nos favoritos, para evitar repositorios duplacados na listagem de favoritos
       if(!this.favoritos.includes(repositorio)){
       this.$store.commit("ADICIONAR_FAVORITO", repositorio)
+      localStorage.setItem('Favoritos', JSON.stringify(this.favoritos))
       } 
     },
   }

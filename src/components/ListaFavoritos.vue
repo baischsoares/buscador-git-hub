@@ -26,6 +26,7 @@ export default {
     removerFavorito(repositorio){
       var index = this.repositorios.indexOf(repositorio)
        this.repositorios.splice(index,1)
+       localStorage.setItem('Favoritos', JSON.stringify(this.repositorios))
     }
   }
 }
