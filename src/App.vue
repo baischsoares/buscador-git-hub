@@ -13,6 +13,18 @@ export default {
   name: 'App',
   components:{
     TopHeader
+  },
+  methods:{
+    pegarFavoritos(){
+      if(window.localStorage.length > 0){
+        let listaFavoritos = JSON.parse(localStorage.getItem('Favoritos'))
+        this.$store.state.favoritos = listaFavoritos
+        console.log(this.$store.state.favoritos)
+      } 
+    }
+  },
+  created(){
+    this.pegarFavoritos()
   }
 }
 </script>

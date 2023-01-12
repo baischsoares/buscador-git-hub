@@ -4,8 +4,13 @@
       <img src="../images/Vector.png" alt=""> 
       <h2>Repositórios favoritos</h2>
     </div> 
-    <ListaFavoritos :maxResult="maxResult" />
-    <button class="verMais" @click="maxResult += 3">Ver mais</button>
+    <div v-if="repositorios.length > 0">
+      <ListaFavoritos :maxResult="maxResult" />
+      <button class="verMais" @click="maxResult += 3">Ver mais</button>
+    </div>
+    <div v-else>
+      <h3>Nenhum favorito salvo</h3>
+    </div>
   </section>
 </template>
 
