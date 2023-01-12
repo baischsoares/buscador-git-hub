@@ -2,7 +2,7 @@
     <div v-for="(repositorio, index) in repositorios" :key="repositorio.id">
      <div class="resultado-item" v-if="index < maxResult">  
         <div>
-          <h3>{{ repositorio.name }} <button href="" class="favorito"> <font-awesome-icon icon="fa-regular fa-star" @click="adicionarFavorito(repositorio)"/></button></h3>
+          <h3>{{ repositorio.name }} <button href="" :class="favoritos.includes(repositorio) ? 'favorito ativo' : 'favorito'"> <font-awesome-icon icon="fa-regular fa-star" @click="adicionarFavorito(repositorio)"/></button></h3>
           <p>{{ repositorio.description }}</p> 
           <font-awesome-icon icon="fa-regular fa-star" /> <span>{{ repositorio.stargazers_count }}</span>
         </div>
@@ -31,7 +31,7 @@ export default {
       if(!this.favoritos.includes(repositorio)){
       this.$store.commit("ADICIONAR_FAVORITO", repositorio)
       } 
-    }
+    },
   }
 }
 </script>
@@ -76,6 +76,9 @@ font-size: 36px;
 cursor: pointer;
 }
 .favorito:hover{
+color: #FFC700;
+}
+.favorito.ativo{
 color: #FFC700;
 
 }
