@@ -5,6 +5,7 @@ import Repositorios from './views/Repositorios.vue';
 import Usuarios from './views/Usuarios.vue';
 import Usuario from './views/Usuario.vue';
 import Favoritos from './views/Favoritos.vue';
+import NotFound from './views/NotFound.vue';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/favoritos',
     name: 'favoritos',
     component: Favoritos,
+  },
+  {
+    path: '/:notFound(.*)',
+    name: 'notfound',
+    component: NotFound,
   },
 ];
 
